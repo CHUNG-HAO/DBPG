@@ -6,7 +6,9 @@
 
 ### E-R diagram and Relational Model
 
-<img width="762" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/0da24537-6491-4c64-a59d-043dc2a61f16">
+<p align="center">
+  <img width="762" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/0da24537-6491-4c64-a59d-043dc2a61f16">
+</p>
 
 > 1. Brands 和 Models：一個品牌 (Brands) 可以有多個型號 (Models)，所以這是一對多的關係。
 > 2. Models 和 Cars：一個型號 (Models) 可以有多輛車 (Cars)，所以這也是一對多的關係。
