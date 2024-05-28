@@ -10,6 +10,90 @@
   <img width="762" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/0da24537-6491-4c64-a59d-043dc2a61f16">
 </p>
 
+### Table Schema
+
+```postgre
+CREATE TABLE Brands (
+    BrandID INT PRIMARY KEY,
+    BrandName VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Dealers (
+    DealerID INT PRIMARY KEY,
+    DealerName VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE DealerBrands (
+    BrandID INT,
+    DealerID INT,
+    PRIMARY KEY (BrandID, DealerID),
+    FOREIGN KEY (BrandID) REFERENCES Brands(BrandID),
+    FOREIGN KEY (DealerID) REFERENCES Dealers(DealerID)
+);
+
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Address VARCHAR(255) NOT NULL,
+    Phone VARCHAR(50) NOT NULL,
+    Gender VARCHAR(10),
+    AnnualIncome VARCHAR(50)
+);
+
+CREATE TABLE Sales (
+    SaleID INT PRIMARY KEY,
+    DealerID INT,
+    CustomerID INT,
+    CarVIN INT,
+    SaleDate DATE,
+    FOREIGN KEY (DealerID) REFERENCES Dealers(DealerID),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    FOREIGN KEY (CarVIN) REFERENCES Cars(VIN)
+);
+
+CREATE TABLE Options (
+    OptionID INT PRIMARY KEY,
+    CarVIN INT,
+    Color VARCHAR(50),
+    Engine VARCHAR(50),
+    Transmission VARCHAR(50),
+    FOREIGN KEY (CarVIN) REFERENCES Cars(VIN)
+);
+
+CREATE TABLE Models (
+    ModelID INT PRIMARY KEY,
+    BrandID INT,
+    ModelName VARCHAR(255) NOT NULL,
+    FOREIGN KEY (BrandID) REFERENCES Brands(BrandID)
+);
+
+CREATE TABLE Cars (
+    VIN INT PRIMARY KEY,
+    ModelID INT,
+    FOREIGN KEY (ModelID) REFERENCES Models(ModelID)
+);
+
+CREATE TABLE Factories (
+    FactoryID INT PRIMARY KEY,
+    FactoryName VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE FactoryBrands (
+    FactoryID INT,
+    BrandID INT,
+    PRIMARY KEY (FactoryID, BrandID),
+    FOREIGN KEY (FactoryID) REFERENCES Factories(FactoryID),
+    FOREIGN KEY (BrandID) REFERENCES Brands(BrandID)
+);
+
+CREATE TABLE Suppliers (
+    SupplierID INT PRIMARY KEY,
+    SupplierName VARCHAR(255) NOT NULL
+);
+
+```
+
+
 > 1. Brands 和 Models：一個品牌 (Brands) 可以有多個型號 (Models)，所以這是一對多的關係。
 > 2. Models 和 Cars：一個型號 (Models) 可以有多輛車 (Cars)，所以這也是一對多的關係。
 > 3. Cars 和 Options：一輛車 (Cars) 可以有多種選項 (Options)，所以這是一對多的關係。
