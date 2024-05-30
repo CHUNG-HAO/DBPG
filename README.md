@@ -10,6 +10,10 @@
   <img width="762" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/0da24537-6491-4c64-a59d-043dc2a61f16">
 </p>
 
+<p align="center">
+  <img width="762" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/6affec9d-ad53-44a7-b4b7-cb2cadf7b62d")>
+</p>
+
 ### Table Schema
 
 ```postgre
