@@ -4,14 +4,16 @@
 > 1. 鍾弘浩 411077033 軟工三 - E-R diagram and Relational Model
 > 2. 林鈺祐 411031111 軟工三 - Populate Relations and Queries
 
-### E-R diagram and Relational Model
+### Relational Model
 
 <p align="center">
-  <img width="762" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/0da24537-6491-4c64-a59d-043dc2a61f16">
+  <img width="641" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/87a434a9-3ae9-4e96-a6c6-429b104b6912">
 </p>
 
+###  ERD
+
 <p align="center">
-  <img width="762" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/6affec9d-ad53-44a7-b4b7-cb2cadf7b62d")>
+<img width="673" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/96d82182-b43a-47ca-9ce7-ef07ec1c8076">
 </p>
 
 ### Table Schema
