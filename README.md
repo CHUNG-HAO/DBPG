@@ -7,7 +7,8 @@
 ###  ERD
 
 <p align="center">
-<img width="673" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/96d82182-b43a-47ca-9ce7-ef07ec1c8076">
+<img width="717" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/608b57c3-7d25-4258-afdd-c4054626bf76">
+
 </p>
 
 ### Relational Model
