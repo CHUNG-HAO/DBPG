@@ -13,7 +13,8 @@
 ### Relational Model
 
 <p align="center">
-  <img width="737" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/49dac0fa-057a-4db2-8477-a22a46d6e5c0">
+  <img width="717" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/1405ff12-fd65-458d-bc1d-0e61c569a23c">
+
 </p>
 
 ### Table Schema
