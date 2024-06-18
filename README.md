@@ -20,32 +20,32 @@
 
 ### Table Schema
 
-```postgre
+```MariaDB
 CREATE TABLE Brands (
     BrandID INT PRIMARY KEY,
-    BrandName VARCHAR(255) NOT NULL
+    BrandName VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE Dealers (
     DealerID INT PRIMARY KEY,
-    DealerName VARCHAR(255) NOT NULL
+    DealerName VARCHAR(80) NOT NULL UNIQUE
 );
 
 CREATE TABLE DealerBrands (
+    id INT PRIMARY KEY,
     BrandID INT,
     DealerID INT,
-    PRIMARY KEY (BrandID, DealerID),
     FOREIGN KEY (BrandID) REFERENCES Brands(BrandID),
     FOREIGN KEY (DealerID) REFERENCES Dealers(DealerID)
 );
 
 CREATE TABLE Customers (
     CustomerID INT PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
-    Address VARCHAR(255) NOT NULL,
-    Phone VARCHAR(50) NOT NULL,
-    Gender VARCHAR(10),
-    AnnualIncome VARCHAR(50)
+    Name VARCHAR(80) NOT NULL,
+    Address VARCHAR(100) NOT NULL,
+    Phone VARCHAR(15) NOT NULL,
+    Gender VARCHAR(20),
+    AnnualIncome DECIMAL(10, 2)
 );
 
 CREATE TABLE Sales (
@@ -53,7 +53,7 @@ CREATE TABLE Sales (
     DealerID INT,
     CustomerID INT,
     CarVIN INT,
-    SaleDate DATE,
+    SaleDate DATETIME,
     FOREIGN KEY (DealerID) REFERENCES Dealers(DealerID),
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
     FOREIGN KEY (CarVIN) REFERENCES Cars(VIN)
@@ -65,7 +65,11 @@ CREATE TABLE Options (
     Color VARCHAR(50),
     Engine VARCHAR(50),
     Transmission VARCHAR(50),
-    FOREIGN KEY (CarVIN) REFERENCES Cars(VIN)
+    OptionPrice DECIMAL(10, 2) NOT NULL,
+    SupplierID INT,
+    ProduceTime DATETIME,
+    FOREIGN KEY (CarVIN) REFERENCES Cars(VIN),
+    FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID)
 );
 
 CREATE TABLE Models (
@@ -78,25 +82,26 @@ CREATE TABLE Models (
 CREATE TABLE Cars (
     VIN INT PRIMARY KEY,
     ModelID INT,
+    Status VARCHAR(1) DEFAULT(1) NOT NULL,
     FOREIGN KEY (ModelID) REFERENCES Models(ModelID)
 );
 
 CREATE TABLE Factories (
     FactoryID INT PRIMARY KEY,
-    FactoryName VARCHAR(255) NOT NULL
+    FactoryName VARCHAR(80) NOT NULL UNIQUE
 );
 
 CREATE TABLE FactoryBrands (
+    id INT PRIMARY KEY,
     FactoryID INT,
     BrandID INT,
-    PRIMARY KEY (FactoryID, BrandID),
     FOREIGN KEY (FactoryID) REFERENCES Factories(FactoryID),
     FOREIGN KEY (BrandID) REFERENCES Brands(BrandID)
 );
 
 CREATE TABLE Suppliers (
     SupplierID INT PRIMARY KEY,
-    SupplierName VARCHAR(255) NOT NULL
+    SupplierName VARCHAR(255) NOT NULL UNIQUE
 );
 
 ```
