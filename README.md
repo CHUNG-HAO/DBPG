@@ -7,9 +7,8 @@
 ## 搜尋
 
 <p align="center">
-<img width="717" alt="image" src="https://github.com/CHUNG-HAO/DBPG/assets/67829896/563e01d1-0283-4c60-a80a-0a697373429a"
+<img width="717" alt="image" src="https://github.com/George15526/DBPG/blob/main/image.png"
 /p>
-
 
 ###  ERD
 

@@ -44,7 +44,7 @@ def get_queries(request):
     # 過去一年銷售最多（以美元金額）的經銷商
     one_year_ago = timezone.now() - timedelta(days=365)
     print(one_year_ago)
-    top_dealer = Sale.objects.filter(SaleDate__gte=one_year_ago).values('DealerID__DealerName').annotate(total_sales=Sum('CarVIN__options__OptionPrice')).order_by('-total_sales').first()
+    top_dealer = Sale.objects.filter(SaleDate__gte=one_year_ago).values('DealerID__DealerName').annotate(total_sales=Sum('CarVIN__options__OptionPrice')).order_by('total_sales').first()
     print(top_dealer)
 
     # 過去一年銷售排名前2的品牌
