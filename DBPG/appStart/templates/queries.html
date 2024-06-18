@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查詢結果</title>
+</head>
+<body>
+    <h1>查詢結果</h1>
+
+    <h2>供應商Getrag缺陷變速箱的車輛及其銷售客戶</h2>
+    {% if defective_car_vins_and_customers %}
+        {% for entry in defective_car_vins_and_customers %}
+            <p>車輛: {{ entry.CarVIN__ModelID__ModelName }},<br/> 客戶: {{ entry.CustomerID__Name }}, <br/>供應商：{{ entry.CarVIN__options__SupplierID__SupplierName }}</p>
+        {% endfor %}
+    {% else %}
+    <p>No Data Found</p>
+    {% endif %}
+    <hr/>
+
+    <h2>過去一年中銷售最多（以美元金額）的經銷商</h2>
+    <p>經銷商: {{ top_dealer.DealerID__DealerName }}, <br/>總銷售額: {{ top_dealer.total_sales }}</p>
+    <hr/>
+
+    <h2>過去一年銷售排名前2的品牌</h2>
+    {% if top_brands %}
+        {% for brand in top_brands %}
+        <dl>
+            {% if forloop.counter == 1 %}
+                <dt>第一名：</dt>
+                <dd>品牌：{{ brand.CarVIN__ModelID__BrandID__BrandName }}, <br/>總銷售額: {{ brand.total_sales }}</dd>
+            {% else %}
+                <dt>第二名：</dt>
+                <dd>品牌：{{ brand.CarVIN__ModelID__BrandID__BrandName }}, <br/>總銷售額: {{ brand.total_sales }}</dd>
+            {% endif %}
+        </dl>
+        {% endfor %}
+    {% else %}
+    <p>No Data Found</p>
+    {% endif %}
+    <hr/>
+
+    <h2>SUV在哪個月份銷售最佳</h2>
+    <p>最佳銷售月份: {{ best_selling_month.month }}</p>
+    <hr/>
+
+    <h2>車輛庫存平均時間最長的經銷商</h2>
+    {% for dealer in dealers_with_avg_inventory_time %}
+        <tr>
+            <td><p>經銷商：{{ dealer.DealerName }}</P></td>
+            <td>
+                {% if dealer.avg_inventory_time %}
+                    {% with days=dealer.avg_inventory_time.days %}
+                        {% with total_seconds=dealer.avg_inventory_time.total_seconds %}
+                            {% with minutes=total_seconds|divisibleby:60|floatformat:0 %}
+                                <p>平均時間：{{ days }} 天 {{ minutes|divisibleby:60|floatformat:0 }} 分</p>
+                            {% endwith %}
+                        {% endwith %}
+                    {% endwith %}
+                {% else %}
+                    No data
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</body>
+</html>
